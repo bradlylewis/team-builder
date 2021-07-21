@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Form.css';
 
 const dummyData = [
     { name: "Bradly", email: "bradly@gmail.com", role: "Full-Stack Engineer" },
@@ -12,9 +13,6 @@ export default function Form(){
 
     const change = (event) => {
         const { value, name } = event.target
-        // const newObj = {...formValues}
-        // newObj[name] = value
-        // setFormValues(newObj)
         setFormValues({...formValues, [name]: value})
       }
 
@@ -23,6 +21,7 @@ export default function Form(){
         const newMember = {
           name: formValues.name.trim(),
           role: formValues.role.trim(),
+          email: formValues.email.trim()
         }
     
         setMembers([...members, newMember])
@@ -34,26 +33,35 @@ export default function Form(){
             <h1>Simple Form</h1>
             {members.map((member, idx) => (
                 <div key={idx}>
-                    {member.name} is a(n) {member.role}
+                    <span>{member.name}</span> is a(n) <span>{member.role}</span>. Contact: <span>{member.email}</span>
                 </div>
             ))}
             <form onSubmit={submit}>
-                <label htmlFor='memberName'>Name: </label>
-                <input
+                <label>Name:<input
                     id='memberName'
                     placeholder='name'
                     type='text'
                     name='name'
                     onChange={change}
-                />
-                <label htmlFor='memberRole'> Role: </label>
-                <input
+                    />
+                </label>
+                <label> Role:<input
                     id='memberRole'
                     placeholder='role'
                     type='text'
                     name='role'
                     onChange={change}
-                />
+                    />
+                 </label>
+                 <label> Email:<input
+                    id='memberEmail'
+                    placeholder='email'
+                    type='text'
+                    name='email'
+                    onChange={change}
+                    />
+                 </label>
+
                 <button>submit</button>
             </form>
         </div>

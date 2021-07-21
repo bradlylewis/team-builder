@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+span {
+  font-weight: bold;
+}
+label::after {
+  content: "\a";
+  white-space: pre;
+}
