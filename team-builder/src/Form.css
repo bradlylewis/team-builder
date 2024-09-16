@@ -1,0 +1,11 @@
+span {
+  font-weight: bold;
+}
+input {
+  margin-left: 1%;
+  
+}
+label::after {
+  content: "\a";
+  white-space: pre;
+}
